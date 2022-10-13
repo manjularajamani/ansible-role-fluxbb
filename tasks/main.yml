@@ -1,0 +1,6 @@
+---
+# tasks file for ansible-role-fluxbb
+
+- include: dependencies.yaml
+- include: fluxbb_install.yaml
+- include: db_setup.yaml

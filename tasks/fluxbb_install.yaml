@@ -1,0 +1,23 @@
+# FluxBB Installation
+---
+
+- name: Restart service Apache2
+  ansible.builtin.service:
+    name: apache2
+    state: restarted
+
+- name:  Download the Fluxbb Forum and Extract fluxbb
+  ansible.builtin.unarchive:
+    src: https://fluxbb.org/download/releases/1.5.11/fluxbb-1.5.11.zip
+    dest: /var/www/html/
+    remote_src: yes
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: /var/www/html/fluxbb-1.5.11/
+    dest: /var/www/html/
+    owner: www-data
+    group: www-data
+    mode: '755' 
+    remote_src: yes
+      

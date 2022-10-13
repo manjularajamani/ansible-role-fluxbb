@@ -1,0 +1,43 @@
+# dependencies.yaml
+--- 
+
+- name: Update all packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+
+- name: Install  Dependencies
+  ansible.builtin.apt:
+    name: 
+       - apache2
+       - software-properties-common
+       - unzip
+    state: latest
+    update_cache: yes
+
+    
+- name: Add specified repository into sources list
+  ansible.builtin.apt_repository:
+    repo: ppa:ondrej/php
+    state: present     
+
+- name: Install php7.4
+  ansible.builtin.apt:
+    name: 
+       - php7.4 
+       - libapache2-mod-php7.4 
+       - php7.4-common 
+       - php7.4-curl 
+       - php7.4-intl 
+       - php7.4-mbstring 
+       - php7.4-xmlrpc 
+       - php7.4-mysql 
+       - php7.4-gd 
+       - php7.4-pgsql
+       - php7.4-xml 
+       - php7.4-cli 
+       - php7.4-imagick 
+       - php7.4-bcmath 
+       - php7.4-gmp 
+       - php7.4-zip
+    state: present      
